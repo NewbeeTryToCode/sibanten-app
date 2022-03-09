@@ -123,7 +123,7 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-6 col-lg-3">
+                        <div class="col-sm-6 col-lg-3">
                             <div class="card card-hover mb-4">
                                 <img src="https://source.unsplash.com/325x200/?website" style="opacity: 0.8" alt="">
                                 <div class="card-body">
@@ -132,7 +132,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 col-lg-3">
+                        <div class="col-sm-6 col-lg-3">
                             <div class="card card-hover mb-4">
                                 <img src="https://source.unsplash.com/325x200/?website" style="opacity: 0.8" alt="">
                                 <div class="card-body">
@@ -141,7 +141,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 col-lg-3">
+                        <div class="col-sm-6 col-lg-3">
                             <div class="card card-hover mb-4">
                                 <img src="https://source.unsplash.com/325x200/?website" style="opacity: 0.8" alt="">
                                 <div class="card-body">
@@ -150,7 +150,7 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6 col-lg-3">
+                        <div class="col-sm-6 col-lg-3">
                             <div class="card card-hover mb-4">
                                 <img src="https://source.unsplash.com/325x200/?website" style="opacity: 0.8" alt="">
                                 <div class="card-body">
