@@ -51,10 +51,6 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col-xs-6 col-sm-6">
-                                <h6 class="text-primary">Komposisi Banten</h6>
-                                <h6 class="text-justify">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Amet eaque porro cumque nemo quisquam laborum at officiis est ad quaerat perferendis, voluptate non sunt consectetur.</h6>
-                            </div>
-                            <div class="col-xs-6 col-sm-6">
                                 <h6 class="text-primary">Tempat Diaturkan</h6>
                                 <h6>Merajan</h6>
                             </div>

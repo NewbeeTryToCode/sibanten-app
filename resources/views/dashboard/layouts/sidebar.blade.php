@@ -2,11 +2,11 @@
      <ul class="navbar-nav bg-gradient-white sidebar sidebar-primary accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-            <div class="sidebar-brand-icon rotate-n-15">
-                <i class="fas fa-file"></i>
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard">
+            <div class="sidebar-brand-icon block">
+                <img src="{{ asset('assets/images/logo-banten2.png') }}" alt="" class="w-75">
             </div>
-            <div class="sidebar-brand-text mx-3">SiBanten <sup>App</sup></div>
+            <div class="sidebar-brand-text  mx-2">SiBanten <sup>App</sup></div>
         </a>
 
         <!-- Divider -->
