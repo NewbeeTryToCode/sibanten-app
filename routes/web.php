@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailController;
+use App\Http\Controllers\PencarianController;
+use App\Http\Controllers\PenjelajahanController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -18,7 +22,8 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard',[DashboardController::class,'index']);
-Route::get('/dashboard/pencarian',[DashboardController::class,'pencarian']);
-Route::get('/dashboard/penjelajahan',[DashboardController::class,'penjelajahan']);
-Route::get('/dashboard/bantens',[DashboardController::class,'bantens']);
+Route::get('/dashboard/pencarian',[PencarianController::class,'pencarian']);
+Route::get('/dashboard/pencarian/fetch_data',[PencarianController::class,'fetch_data']);
+Route::get('/dashboard/penjelajahan',[PenjelajahanController::class,'index']);
+Route::get('/dashboard/bantens',[DetailController::class,'index']);
 
