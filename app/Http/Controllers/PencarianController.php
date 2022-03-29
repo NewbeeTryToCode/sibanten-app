@@ -35,6 +35,8 @@ class PencarianController extends Controller
                 'kategoriYadnya' => $this->parseData($item->kategoriYadnya->getUri())
             ]);
         }
+        
+        
         foreach($unsurBanten as $item){
             array_push($resultUnsurBanten, [
                 'kategoriUnsurBanten' => $this->parseData($item->unsur->getUri())

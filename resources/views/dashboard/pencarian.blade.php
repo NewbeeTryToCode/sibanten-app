@@ -30,7 +30,7 @@
                             <select class="custom-select" id="cari_kategoriYadnya" name="cari_kategoriYadnya">
                                  <option value="">Kategori Yadnya</option>
                                  @foreach ($data['listKategoriYadnya'] as $item)
-                                 <option value="{{ $item['kategoriYadnya'] }}">{{ str_replace('_'," ",$item['kategoriYadnya']) }}</option>
+                                 <option value="{{ $item['kategoriYadnya'] }}">{{ preg_replace('/(?<!\ )[A-Z]/', ' $0', $item['kategoriYadnya']) }}</option>
                             @endforeach
                              </select>
                         </div>
@@ -43,7 +43,7 @@
                              </select>
                         </div> 
                         <div class="form-group col-sm-12 my-2">
-                            <button type="submit" id="reset" class="btn float-right btn-warning px-4 ml-2">Reset</button>
+                            <a href="/dashboard/pencarian" class="btn float-right btn-warning px-4 ml-2">Reset</a>
                             <button type="submit" id="cari_banten" name="cari_banten" class="btn float-right btn-primary px-4">Cari</button>
                         </div>
                     </form>

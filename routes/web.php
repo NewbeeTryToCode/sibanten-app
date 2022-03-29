@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 Route::get('/dashboard',[DashboardController::class,'index']);
 Route::get('/dashboard/pencarian',[PencarianController::class,'pencarian']);
-Route::get('/dashboard/pencarian/fetch_data',[PencarianController::class,'fetch_data']);
-Route::get('/dashboard/penjelajahan',[PenjelajahanController::class,'index']);
-Route::get('/dashboard/bantens',[DetailController::class,'index']);
+Route::get('/dashboard/penjelajahan',[PenjelajahanController::class,'penjelajahan']);
+Route::get('/dashboard/penjelajahan/?NamaYadnya={banten:namaYadnya}',[PenjelajahanController::class,'penjelajahanYadnya']);
+Route::get('/dashboard/detail/{namaBanten}',[DetailController::class,'detail']);
 
