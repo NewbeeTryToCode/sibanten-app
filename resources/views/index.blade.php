@@ -20,7 +20,7 @@
     <link href="{{ asset('assets/css/sb-admin-2.min.css') }}" rel="stylesheet">
 
 
-    <title>SiBanten App</title>
+    <title>{{ $title }}</title>
 
     <!-- Bootstrap core CSS -->
     <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -63,12 +63,13 @@ https://templatemo.com/tm-568-digimedia
                 <li class="scroll-to-section">
                   <a href="#top" class="active">Home</a>
                 </li>
-                <li class="scroll-to-section"><a href="#about">About</a></li>
+                <li class="scroll-to-section">
+                  <a href="#about">About</a></li>
                 <li class="scroll-to-section">
                   <a href="#services">Services</a>
                 </li>
                 <li class="scroll-to-section">
-                  <a href="#portfolio">Datasets</a>
+                  <a href="#portfolio">Data</a>
                 </li>
                 <li class="scroll-to-section">
                   <a href="#contact">Contact</a>
@@ -165,19 +166,19 @@ https://templatemo.com/tm-568-digimedia
                     SiBanten App (Sistem Informasi Banten) merupakan website yang dapat digunakan untuk mencari pengetahuan tentang banten, melalui beberapa kategori pencarian dan penjelajahan yang ditawarkan.
                   </p>
                   <div class="row mb-4">
-                    <div class="col-lg-4 col-sm-4">
+                    <div class="col-lg-6 col-xs-6">
                       <div
                         class="skill-item first-skill-item wow fadeIn"
                         data-wow-duration="1s"
                         data-wow-delay="0s"
                       >
-                        <div class="card border-left-success  h-100 py-2">
+                        <div class="card border-left-danger  h-100 py-2">
                           <div class="card-body">
                             <div class="row no-gutters align-items-center">
                               <div class="col mr-2">
                                   <div class=" text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                      Jumlah Upacara</div>
-                                  <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+                                      Kategori Banten</div>
+                                  <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
                               </div>
                               <div class="col-auto">
                                   <i class="fas fa-file fa-2x text-gray-300"></i>
@@ -187,7 +188,7 @@ https://templatemo.com/tm-568-digimedia
                         </div>
                       </div>
                     </div>
-                    <div class="col-lg-4 col-sm-4">
+                    <div class="col-lg-6 col-xs-6">
                       <div
                         class="skill-item second-skill-item wow fadeIn"
                         data-wow-duration="1s"
@@ -198,30 +199,8 @@ https://templatemo.com/tm-568-digimedia
                           <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class=" text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Jumlah Upacara</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-file fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                        </div>
-                      </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-4">
-                      <div
-                        class="skill-item third-skill-item wow fadeIn"
-                        data-wow-duration="1s"
-                        data-wow-delay="0s"
-                      >
-                      <div class="card border-left-success  h-100 py-2">
-                        <div class="card-body">
-                          <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class=" text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Jumlah Upacara</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+                                    Jumlah Banten</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $count }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-file fa-2x text-gray-300"></i>
@@ -233,41 +212,19 @@ https://templatemo.com/tm-568-digimedia
                     </div>
                   </div>
                   <div class="row mb-4">
-                    <div class="col-lg-4 col-sm-4">
+                    <div class="col-lg-6 col-xs-6">
                       <div
-                        class="skill-item first-skill-item wow fadeIn"
+                        class="skill-item third-skill-item wow fadeIn"
                         data-wow-duration="1s"
                         data-wow-delay="0s"
                       >
-                        <div class="card border-left-success  h-100 py-2">
-                          <div class="card-body">
-                            <div class="row no-gutters align-items-center">
-                              <div class="col mr-2">
-                                  <div class=" text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                      Jumlah Upacara</div>
-                                  <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
-                              </div>
-                              <div class="col-auto">
-                                  <i class="fas fa-file fa-2x text-gray-300"></i>
-                              </div>
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-4">
-                      <div
-                        class="skill-item second-skill-item wow fadeIn"
-                        data-wow-duration="1s"
-                        data-wow-delay="0s"
-                      >
-                      <div class="card border-left-success  h-100 py-2">
+                      <div class="card border-left-warning  h-100 py-2">
                         <div class="card-body">
                           <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class=" text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Jumlah Upacara</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+                                    Kategori Yadnya</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">5</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-file fa-2x text-gray-300"></i>
@@ -277,19 +234,19 @@ https://templatemo.com/tm-568-digimedia
                       </div>
                       </div>
                     </div>
-                    <div class="col-lg-4 col-sm-4">
+                    <div class="col-lg-6 col-xs-6">
                       <div
                         class="skill-item third-skill-item wow fadeIn"
                         data-wow-duration="1s"
                         data-wow-delay="0s"
                       >
-                      <div class="card border-left-success  h-100 py-2">
+                      <div class="card border-left-warning  h-100 py-2">
                         <div class="card-body">
                           <div class="row no-gutters align-items-center">
                             <div class="col mr-2">
                                 <div class=" text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                    Jumlah Upacara</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">20</div>
+                                    Jumlah Yadnya</div>
+                                <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $countupacara }}</div>
                             </div>
                             <div class="col-auto">
                                 <i class="fas fa-file fa-2x text-gray-300"></i>
@@ -370,43 +327,30 @@ https://templatemo.com/tm-568-digimedia
                                 <div class="left-text">
                                   <h4>Dashboard</h4>
                                   <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit, sedr do eiusmod deis tempor
-                                    incididunt ut labore et dolore kengan darwin
-                                    doerski token. dover lipsum lorem and the
-                                    others.
+                                    Fitur dashboard merupakan fitur yang dapat digunakan oleh pengguna untuk melihat informasi lengkap terkait data banten.
+                                    Informasi tersebut diantaranya jumlah dari keseluruhan data banten, tingkatan banten, kategori yadnya, jumlah yadnya, serta jumlah banten tiap kategori yadnya.
+                                    Selain itu dalam dashboard juga ditampilkan semua data banten dengan pagination untuk memudahkan navigasi pengguna.
                                   </p>
                                   <div class="ticks-list">
                                     <span
-                                      ><i class="fa fa-check"></i> Optimized
-                                      Template</span
+                                      ><i class="fa fa-check"></i> Seluruh Informasi Banten</span
                                     >
                                     <span
-                                      ><i class="fa fa-check"></i> Data
-                                      Info</span
+                                      ><i class="fa fa-check"></i> Tingkatan Banten</span
                                     >
                                     <span
-                                      ><i class="fa fa-check"></i> SEO
-                                      Analysis</span
+                                      ><i class="fa fa-check"></i> Jumlah Banten</span
                                     >
                                     <span
-                                      ><i class="fa fa-check"></i> Data
-                                      Info</span
+                                      ><i class="fa fa-check"></i> Kategori Yadnya</span
                                     >
                                     <span
-                                      ><i class="fa fa-check"></i> SEO
-                                      Analysis</span
+                                      ><i class="fa fa-check"></i> Jumlah Yadnya</span
                                     >
                                     <span
-                                      ><i class="fa fa-check"></i> Optimized
-                                      Template</span
+                                      ><i class="fa fa-check"></i> Jumlah Banten Tiap Kategori Yadnya</span
                                     >
                                   </div>
-                                  <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit, sedr do eiusmod deis tempor
-                                    incididunt.
-                                  </p>
                                 </div>
                               </div>
                               <div class="col-lg-6 align-self-center">
@@ -429,43 +373,23 @@ https://templatemo.com/tm-568-digimedia
                                 <div class="left-text">
                                   <h4>Pencarian</h4>
                                   <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit, sedr do eiusmod deis tempor
-                                    incididunt ut labore et dolore kengan darwin
-                                    doerski token. dover lipsum lorem and the
-                                    others.
+                                    Fitur pencarian merupakan fitur yang dapat digunakan mencari banten secara spesifik. Melalui beberapa kategori yang disediakan seperti unsur banten, tingkatan banten, periode yadnya, serta kategori yadnya.
+                                    Dengan kategori tersebut, pencarian dapat menghasilkan banten yang spesifik untuk memenuhi segala kebutuhan tersebut.
                                   </p>
                                   <div class="ticks-list">
                                     <span
-                                      ><i class="fa fa-check"></i> Optimized
-                                      Template</span
+                                      ><i class="fa fa-check"></i>  Berdasarkan Unsur Banten</span
                                     >
                                     <span
-                                      ><i class="fa fa-check"></i> Data
-                                      Info</span
+                                      ><i class="fa fa-check"></i>  Berdasarkan Tingkatan Banten</span
                                     >
                                     <span
-                                      ><i class="fa fa-check"></i> SEO
-                                      Analysis</span
+                                      ><i class="fa fa-check"></i>  Berdasarkan Periode Yadnya</span
                                     >
                                     <span
-                                      ><i class="fa fa-check"></i> Data
-                                      Info</span
-                                    >
-                                    <span
-                                      ><i class="fa fa-check"></i> SEO
-                                      Analysis</span
-                                    >
-                                    <span
-                                      ><i class="fa fa-check"></i> Optimized
-                                      Template</span
+                                      ><i class="fa fa-check"></i>  Berdasarkan Kategori Yadnya</span
                                     >
                                   </div>
-                                  <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit, sedr do eiusmod deis tempor
-                                    incididunt.
-                                  </p>
                                 </div>
                               </div>
                               <div class="col-lg-6 align-self-center">
@@ -488,43 +412,18 @@ https://templatemo.com/tm-568-digimedia
                                 <div class="left-text">
                                   <h4>Penjelajahan</h4>
                                   <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit, sedr do eiusmod deis tempor
-                                    incididunt ut labore et dolore kengan darwin
-                                    doerski token. dover lipsum lorem and the
-                                    others.
+                                    Dalam penjelajahan pengguna dapat menjelajahi banten yang ingin dicari melalui kategori yadnya, kemudian nama yadnyanya
+                                    . Hal ini dapat mempermudah pengguna untuk mencari banten berdasarkan dari upacara yang dilaksanakan
                                   </p>
                                   <div class="ticks-list">
+                                    
                                     <span
-                                      ><i class="fa fa-check"></i> Optimized
-                                      Template</span
+                                      ><i class="fa fa-check"></i> Penjelajahan Menggunakan Kategori Yadnya</span
                                     >
                                     <span
-                                      ><i class="fa fa-check"></i> Data
-                                      Info</span
-                                    >
-                                    <span
-                                      ><i class="fa fa-check"></i> SEO
-                                      Analysis</span
-                                    >
-                                    <span
-                                      ><i class="fa fa-check"></i> Data
-                                      Info</span
-                                    >
-                                    <span
-                                      ><i class="fa fa-check"></i> SEO
-                                      Analysis</span
-                                    >
-                                    <span
-                                      ><i class="fa fa-check"></i> Optimized
-                                      Template</span
+                                      ><i class="fa fa-check"></i> Penjelajahan Berdasarkan Nama Yadnya</span
                                     >
                                   </div>
-                                  <p>
-                                    Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing elit, sedr do eiusmod deis tempor
-                                    incididunt.
-                                  </p>
                                 </div>
                               </div>
                               <div class="col-lg-6 align-self-center">
@@ -573,71 +472,24 @@ https://templatemo.com/tm-568-digimedia
         <div class="row">
           <div class="col-lg-12">
             <div class="loop owl-carousel">
+              @for($i=0;$i<10;$i++)
               <div class="item">
-                <a href="#">
+                <a href="/dashboard/detail/{{ $banten[$i]['nama_banten'] }}">
                   <div class="portfolio-item">
                     <div class="thumb">
-                      <img src="https://source.unsplash.com/200x300/?website" alt="" />
+                      @if($banten[$i]['gambar']=='-')
+                      <img src="/assets/images/banten/missing.jpeg" alt="{{ $banten[$i]['nama_banten'] }}" style="width: 100%;height:35vh"/>
+                      @else
+                      <img src="/assets/images/banten/{{ $banten[$i]['gambar'] }}" alt="{{ $banten[$i]['nama_banten'] }}"style="width: 100%;height:35vh" />
+                      @endif
                     </div>
                     <div class="down-content">
-                      <h4>Website Builder</h4>
-                      <span>Marketing</span>
+                      <span class="mx-2">{{ str_replace('_',' ',$banten[$i]['nama_banten']) }}</span>
                     </div>
                   </div>
                 </a>
               </div>
-              <div class="item">
-                <a href="#">
-                  <div class="portfolio-item">
-                    <div class="thumb">
-                      <img src="https://source.unsplash.com/200x300/?website" alt="" />
-                    </div>
-                    <div class="down-content">
-                      <h4>Website Builder</h4>
-                      <span>Marketing</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="item">
-                <a href="#">
-                  <div class="portfolio-item">
-                    <div class="thumb">
-                      <img src="https://source.unsplash.com/200x300/?website" alt="" />
-                    </div>
-                    <div class="down-content">
-                      <h4>Website Builder</h4>
-                      <span>Marketing</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="item">
-                <a href="#">
-                  <div class="portfolio-item">
-                    <div class="thumb">
-                      <img src="https://source.unsplash.com/200x300/?website" alt="" />
-                    </div>
-                    <div class="down-content">
-                      <h4>Website Builder</h4>
-                      <span>Marketing</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
-              <div class="item">
-                <a href="#">
-                  <div class="portfolio-item">
-                    <div class="thumb">
-                      <img src="https://source.unsplash.com/200x300/?website" alt="" />
-                    </div>
-                    <div class="down-content">
-                      <h4>Website Builder</h4>
-                      <span>Marketing</span>
-                    </div>
-                  </div>
-                </a>
-              </div>
+              @endfor
             </div>
           </div>
         </div>
@@ -674,7 +526,7 @@ https://templatemo.com/tm-568-digimedia
                   <div id="map">
                     <iframe
                     
-                      src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                      src="https://maps.google.com/maps?q=JalanPantaiPurnama,+Gianyar,+Indonesia&t=&z=13&ie=UTF8&iwloc=&output=embed"
                       width="100%"
                       height="636px"
                       frameborder="0"
@@ -698,7 +550,7 @@ https://templatemo.com/tm-568-digimedia
                         <div class="info-post">
                           <div class="icon">
                             <img src="assets/images/email-icon.png" alt="" />
-                            <a href="#">our@email.com</a>
+                            <a href="#">info@sibanten-app.com</a>
                           </div>
                         </div>
                       </div>
@@ -706,7 +558,7 @@ https://templatemo.com/tm-568-digimedia
                         <div class="info-post">
                           <div class="icon">
                             <img src="assets/images/location-icon.png" alt="" />
-                            <a href="#">123 Rio de Janeiro</a>
+                            <a href="#">Jalan Pantai Purnama, Sukawati</a>
                           </div>
                         </div>
                       </div>

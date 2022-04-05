@@ -68,7 +68,7 @@
                                         @foreach ($data['resultNamaYadnya'] as $item)
                                             <div class="col-md-6 col-lg-3">
                                                 <div class="card card-hover mb-4">
-                                                    <img src="" style="opacity: 0.8; width:100%; height:160px" alt="{{ $item['namaUpacara'] }}">
+                                                    <img src="assets/images/upacara/{{ $item['gambar'] }}" style="opacity: 0.8; width:100%; height:160px" alt="{{ $item['gambar'] }}">
                                                     <div class="card-body">
                                                         <a href="/dashboard/penjelajahan?NamaYadnya={{ $item['namaUpacara'] }}" class="text-decoration-none text-secondary"><h5 class="text-center">{{ str_replace("_"," ",$item['namaUpacara']) }}</h5></a>
                                                     </div>

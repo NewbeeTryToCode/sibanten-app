@@ -10,7 +10,7 @@ class DetailController extends Controller
         //kueri data detail
         $detailBanten = $this->sparql->query('SELECT * WHERE
         { VALUES ?namaBanten{banten:'.$namaBanten.'}
-  		?namaBanten banten:memilikiUnsurBanten ?unsurBanten
+  		OPTIONAL {?namaBanten banten:memilikiUnsurBanten ?unsurBanten}
   		OPTIONAL {?namaBanten banten:memilikiKomponen ?komponen}
         OPTIONAL {?namaBanten rdf:type ?tingkatanBanten}  
         OPTIONAL {?namaBanten banten:memilikiAlasBanten ?alasBanten}

@@ -7,14 +7,13 @@ use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 class DashboardController extends Controller
 {
-    public function index(){
+    public function dashboard(){
         //query semua data banten dan gambar
         $banten = $this->sparql->query('SELECT ?banten 
             (COALESCE (?gambar,?missing) as ?gambarnull) 
-            (COALESCE(?upacara,?missing) as ?upacaranull) 
                 WHERE{VALUES ?missing {"missing.jpeg"}
-                {?banten a banten:Banten} 
-                UNION {?banten a banten:Alit} 
+                {?banten a banten:Alit} 
+                UNION {?banten a banten:Banten} 
                 UNION {?banten a banten:Madya}
                 UNION {?banten a banten:Utama}
                 OPTIONAL{?banten banten:memilikiFoto ?gambar}
@@ -111,6 +110,44 @@ class DashboardController extends Controller
             'countupacara'=>$countUpacara,
             'tipeUpacara'=>$allDashboardUpacara,
             'totalTipeUpacara'=>$totaTipelUpacara
+            ]
+        );
+    }
+
+    public function index(){
+        //query semua data banten dan gambar
+        $banten = $this->sparql->query('SELECT ?banten 
+        (COALESCE (?gambar,?missing) as ?gambarnull) 
+            WHERE{VALUES ?missing {"missing.jpeg"}
+            {?banten a banten:Alit} 
+            UNION {?banten a banten:Banten} 
+            UNION {?banten a banten:Madya}
+            UNION {?banten a banten:Utama}
+            OPTIONAL{?banten banten:memilikiFoto ?gambar}
+        }');
+        //query semua data upacara yadnya
+        $upacara = $this->sparql->query('SELECT (COUNT (?upacara)as ?TotalUpacara)
+        WHERE {{?upacara a banten:ManusaYadnya}
+            UNION{?upacara a banten:DewaYadnya} 
+            UNION{?upacara a banten:BhutaYadnya} 
+            UNION{?upacara a banten:RsiYadnya} 
+            UNION{?upacara a banten:PitraYadnya}}');
+
+        $result =[];
+        $count = 0;
+        $countUpacara = $this->parseData($upacara[0]->TotalUpacara->getValue());
+        foreach($banten as $b){
+            array_push($result,[
+                'nama_banten'=>$this->parseData($b->banten->getUri()),
+                'gambar'=>$this->parseData($b->gambarnull->getValue()),
+                ]);
+            $count=$count+1;
+        }
+        return view('index',[
+            'title'=>'Si Banten - App',
+            'banten'=>$result,
+            'count'=>$count,
+            'countupacara'=>$countUpacara,
             ]
         );
     }

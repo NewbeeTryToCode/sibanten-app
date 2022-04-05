@@ -30,7 +30,10 @@ class PenjelajahanController extends Controller
                     VALUES ?missing {"missing.jpeg"} {?namaUpacara a banten:'.$request->kategoriYadnya.'} OPTIONAL{?namaUpacara banten:memilikiFoto ?gambar}}');
                 foreach($namaYadnya as $item){
                     array_push($resultNamaYadnya,[
-                        'namaUpacara'=>$this->parseData($item->namaUpacara->getUri())
+                        'namaUpacara'=>$this->parseData($item->namaUpacara->getUri()),
+                        'gambar'=>$this->parseData($item->gambarnull->getValue())
+                        
+                        
                     ]);
                 }
             }

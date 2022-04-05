@@ -14,7 +14,11 @@
                            <select class="custom-select"id="cari_kategoriTingkatanBanten" name="cari_kategoriTingkatanBanten">
                                 <option value="">Kategori Banten</option>
                                 @foreach ($data['listKategoriTingkatanBanten'] as $item)
-                                    <option value="{{ $item['kategoriTingkatanBanten'] }}">{{ $item['kategoriTingkatanBanten'] }}</option>
+                                @if(isset($_GET['cari_kategoriTingkatanBanten']) &&$_GET['cari_kategoriTingkatanBanten']==$item['kategoriTingkatanBanten'])
+                                <option selected value="{{ $item['kategoriTingkatanBanten'] }}">{{ $item['kategoriTingkatanBanten'] }}</option>
+                                @else
+                                <option value="{{ $item['kategoriTingkatanBanten'] }}">{{ $item['kategoriTingkatanBanten'] }}</option>
+                                @endif
                                 @endforeach
                             </select>
                        </div>   
@@ -22,15 +26,23 @@
                             <select class="custom-select" id="cari_kategoriUnsurBanten" name="cari_kategoriUnsurBanten">
                                 <option value="">Unsur Banten</option>                            
                                 @foreach ($data['listKategoriUnsurBanten'] as $item)
+                                @if(isset($_GET['cari_kategoriUnsurBanten']) &&$_GET['cari_kategoriUnsurBanten']==$item['kategoriUnsurBanten'])
+                                <option selected value="{{ $item['kategoriUnsurBanten'] }}">{{ $item['kategoriUnsurBanten'] }}</option>
+                                @else
                                 <option value="{{ $item['kategoriUnsurBanten'] }}">{{ $item['kategoriUnsurBanten'] }}</option>
-                            @endforeach
+                                @endif                            
+                                @endforeach
                             </select>
                         </div>
                         <div class="form-group col-sm-6 my-2">
                             <select class="custom-select" id="cari_kategoriYadnya" name="cari_kategoriYadnya">
                                  <option value="">Kategori Yadnya</option>
                                  @foreach ($data['listKategoriYadnya'] as $item)
+                                 @if(isset($_GET['cari_kategoriYadnya']) &&$_GET['cari_kategoriYadnya']==$item['kategoriYadnya'])
+                                 <option selected value="{{ $item['kategoriYadnya'] }}">{{ preg_replace('/(?<!\ )[A-Z]/', ' $0', $item['kategoriYadnya']) }}</option>
+                                 @else
                                  <option value="{{ $item['kategoriYadnya'] }}">{{ preg_replace('/(?<!\ )[A-Z]/', ' $0', $item['kategoriYadnya']) }}</option>
+                                 @endif
                             @endforeach
                              </select>
                         </div>
@@ -38,7 +50,11 @@
                             <select class="custom-select" id="cari_kategoriPeriodeYadnya" name="cari_kategoriPeriodeYadnya">
                                  <option value="">Periode Yadnya</option>
                                  @foreach ($data['listKategoriPeriodeYadnya'] as $item)
+                                 @if(isset($_GET['cari_kategoriPeriodeYadnya']) &&$_GET['cari_kategoriPeriodeYadnya']==$item['kategoriPeriodeYadnya'])
+                                 <option selected value="{{ $item['kategoriPeriodeYadnya'] }}">{{ str_replace('_'," ",$item['kategoriPeriodeYadnya']) }}</option>
+                                 @else
                                  <option value="{{ $item['kategoriPeriodeYadnya'] }}">{{ str_replace('_'," ",$item['kategoriPeriodeYadnya']) }}</option>
+                                 @endif
                             @endforeach                            
                              </select>
                         </div> 

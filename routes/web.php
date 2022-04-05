@@ -17,11 +17,9 @@ use App\Http\Controllers\PenjelajahanController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [DashboardController::class,'index']);
 
-Route::get('/dashboard',[DashboardController::class,'index']);
+Route::get('/dashboard',[DashboardController::class,'dashboard']);
 Route::get('/dashboard/pencarian',[PencarianController::class,'pencarian']);
 Route::get('/dashboard/penjelajahan',[PenjelajahanController::class,'penjelajahan']);
 Route::get('/dashboard/penjelajahan/?NamaYadnya={banten:namaYadnya}',[PenjelajahanController::class,'penjelajahanYadnya']);
