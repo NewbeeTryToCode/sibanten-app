@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailController;
-use App\Http\Controllers\PencarianController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PencarianController;   
 use App\Http\Controllers\PenjelajahanController;
+use App\Http\Controllers\PencarianNamaBantenController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,8 @@ Route::get('/', [DashboardController::class,'index']);
 
 Route::get('/dashboard',[DashboardController::class,'dashboard']);
 Route::get('/dashboard/pencarian',[PencarianController::class,'pencarian']);
+Route::get('/dashboard/pencarianNamaBanten',[PencarianNamaBantenController::class,'index']);
+
 Route::get('/dashboard/penjelajahan',[PenjelajahanController::class,'penjelajahan']);
 Route::get('/dashboard/penjelajahan/?NamaYadnya={banten:namaYadnya}',[PenjelajahanController::class,'penjelajahanYadnya']);
 Route::get('/dashboard/detail/{namaBanten}',[DetailController::class,'detail']);

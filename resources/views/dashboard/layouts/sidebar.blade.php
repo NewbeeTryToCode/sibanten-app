@@ -26,11 +26,20 @@
         <div class="sidebar-heading">
             Fitur
         </div>
-
         <li class="nav-item {{ Request::is('dashboard/pencarian') ? 'active':'' }}">
-            <a class="nav-link " href="/dashboard/pencarian">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePencarian"
+                aria-expanded="true" aria-controls="collapsePencarian">
                 <i class="fa-solid fa-magnifying-glass"></i>
-                <span>Pencarian</span></a>
+                <span>Pencarian</span>
+            </a>
+            <div id="collapsePencarian" class="collapse" aria-labelledby="headingPencarian"
+                data-parent="#accordionSidebar">
+                <div class="bg-light py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Pencarian Berdasarkan</h6>
+                    <a class="collapse-item " href="/dashboard/pencarian">Kategori</a>
+                    <a class="collapse-item " href="/dashboard/pencarianNamaBanten">Nama Banten</a>
+                </div>
+            </div>
         </li>
         <li class="nav-item {{ Request::is('dashboard/penjelajahan') ? 'active':'' }}">
             <a class="nav-link" href="/dashboard/penjelajahan">

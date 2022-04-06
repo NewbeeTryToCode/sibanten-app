@@ -111,8 +111,7 @@ use App\Http\Controllers\DetailController;
                             <div class="col-xs-6 col-sm-6">
                                 <?php
                                 $index = 'alasBanten';
-                                $string = '';
-                                $i=0;
+                                $i=1;
                                 $count=count(DetailController::sameAs($detailBanten,$index));
                                 ?>
                                 <h6 class="text-primary">Alas Banten</h6>
@@ -120,19 +119,14 @@ use App\Http\Controllers\DetailController;
                                 <h6>-</h6>
                                 @else
                                     @foreach (DetailController::sameAs($detailBanten,$index) as $item)
-                                        @if($i==0 ||$i==$count)
-                                        <?php
-                                        $string = $string.$item
-                                        ?>
-                                        @else
-                                        <?php
-                                        $string = $string.', '.$item
-                                        ?>
-                                        @endif
-                                        <?php
-                                        $i++;?>
+                                    @if($i ==$count)
+                                    <a class="text-secondary" href="/dashboard/detail/{{ $item }}">{{str_replace('_',' ', $item) }}</a>
+                                    @else
+                                    <a class="text-secondary" href="/dashboard//{{ $item }}">{{ str_replace('_',' ', $item) }}, </a>
+                                    @endif
+                                    <?php
+                                    $i++?>
                                     @endforeach
-                                    <h6>{{ $string }}</h6>
                                 @endif
                             </div> 
                             <div class="col-xs-6 col-sm-6">

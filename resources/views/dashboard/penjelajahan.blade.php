@@ -9,23 +9,38 @@
             <div class="card shadow mb-4">
                 <div class="card-body">
                     <form action="" class="row mb-4">
-                        <div class="form-group col-sm-6 my-2">
-                            <select class="custom-select" name="kategoriYadnya" id="kategoriYadnya">
-                                <option value="">Kategori Yadnya</option>
-                                @foreach ($data['kategoriYadnya'] as $item)
-                                @if($data['namaKategori']!=null && $data['namaKategori'][1]['namaKategori']==$item['kategoriYadnya'] || isset($_GET['kategoriYadnya']) &&$_GET['kategoriYadnya']==$item['kategoriYadnya'])
-                                    <option selected value="{{ $item['kategoriYadnya'] }}">{{ preg_replace('/(?<!\ )[A-Z]/', ' $0', $item['kategoriYadnya']) }}</option>
-                                @else
-                                    <option value="{{ $item['kategoriYadnya'] }}">{{ preg_replace('/(?<!\ )[A-Z]/', ' $0', $item['kategoriYadnya']) }}</option>
-                                @endif
-                                @endforeach
-                            </select>
+                        <div class="col-md-6">
+                            <div class="form-group col-sm-12 my-2">
+                                <select class="custom-select" name="kategoriYadnya" id="kategoriYadnya">
+                                    <option value="">Kategori Yadnya</option>
+                                    @foreach ($data['kategoriYadnya'] as $item)
+                                    @if(isset($_GET['kategoriYadnya']) &&$_GET['kategoriYadnya']==$item['kategoriYadnya'])
+                                        <option selected value="{{ $item['kategoriYadnya'] }}">{{ preg_replace('/(?<!\ )[A-Z]/', ' $0', $item['kategoriYadnya']) }}</option>
+                                    @else
+                                        <option value="{{ $item['kategoriYadnya'] }}">{{ preg_replace('/(?<!\ )[A-Z]/', ' $0', $item['kategoriYadnya']) }}</option>
+                                    @endif
+                                    @endforeach
+                                </select>
+                                
+                            </div>
+                            <div class="form-group col-sm-12 my-2">
+                                <a href="/dashboard/penjelajahan" class="btn float-right btn-warning px-4 ml-2">Reset</a>
+                                <button type="submit" name="penjelajahanBanten" class="btn  float-right btn-primary px-4">Jelajah</button>
+                            </div>
                         </div>
-                        <div class="form-group col-sm-6 my-2">
-                        </div>
-                        <div class="form-group col-sm-6 my-2">
-                            <a href="/dashboard/penjelajahan" class="btn float-right btn-warning px-4 ml-2">Reset</a>
-                            <button type="submit" name="penjelajahanBanten" class="btn  float-right btn-primary px-4">Jelajah</button>
+                        <div class="col-md-6">
+                            @if($sql!=='')
+                            <div class="col-md-12">
+                                <div class="card">
+                                    <div class="card-header bg-primary text-white">
+                                    SPARQL Query
+                                    </div>
+                                    <div class="card-body">
+                                        <p>{{ $sql }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            @endif
                         </div>
                     </form>
                     <div class="card shadow-sm mb-4">

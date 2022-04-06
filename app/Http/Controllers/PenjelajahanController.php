@@ -16,7 +16,6 @@ class PenjelajahanController extends Controller
                 'kategoriYadnya' => $this->parseData($item->kategoriYadnya->getUri())
             ]);
         } 
-        $resultNamaKategori=[];
         $resultBantenYadnya=[];
         $jumlahBanten=0;
         $resp = 0;
@@ -26,13 +25,13 @@ class PenjelajahanController extends Controller
         if($request->has('penjelajahanBanten')){
             $resp=1;
             if($request->kategoriYadnya){
-                $namaYadnya = $this->sparql->query('SELECT ?namaUpacara (COALESCE(?gambar, ?missing) as ?gambarnull) WHERE{
-                    VALUES ?missing {"missing.jpeg"} {?namaUpacara a banten:'.$request->kategoriYadnya.'} OPTIONAL{?namaUpacara banten:memilikiFoto ?gambar}}');
+                $sql = 'SELECT ?namaUpacara (COALESCE(?gambar, ?missing) as ?gambarnull) WHERE{
+                    VALUES ?missing {"missing.jpeg"} {?namaUpacara a banten:'.$request->kategoriYadnya.'} OPTIONAL{?namaUpacara banten:memilikiFoto ?gambar}}';
+                $namaYadnya = $this->sparql->query($sql);
                 foreach($namaYadnya as $item){
                     array_push($resultNamaYadnya,[
                         'namaUpacara'=>$this->parseData($item->namaUpacara->getUri()),
                         'gambar'=>$this->parseData($item->gambarnull->getValue())
-                        
                         
                     ]);
                 }
@@ -46,15 +45,9 @@ class PenjelajahanController extends Controller
         //query mencari banten dari yadnya
         if(isset($_GET['NamaYadnya'])){
             $resp= 1;
-            
-            $namaKategori = $this->sparql->query('SELECT ?kategoriYadnya WHERE{banten:'.$_GET['NamaYadnya'].' rdf:type ?kategoriYadnya}');
-            foreach($namaKategori as $item){
-                array_push($resultNamaKategori,[
-                    'namaKategori'=>$this->parseData($item->kategoriYadnya->getUri())
-                ]);
-            }
-            $bantenYadnya = $this->sparql->query('SELECT ?banten (COALESCE(?gambar, ?missing) as ?gambarnull) WHERE{
-                VALUES ?missing {"missing.jpeg"} {?banten banten:bantenDari banten:'.$_GET['NamaYadnya'].'} OPTIONAL{?banten banten:memilikiFoto ?gambar}}');
+            $sql = 'SELECT ?banten (COALESCE(?gambar, ?missing) as ?gambarnull) WHERE{
+                VALUES ?missing {"missing.jpeg"} {?banten banten:bantenDari banten:'.$_GET['NamaYadnya'].'} OPTIONAL{?banten banten:memilikiFoto ?gambar}}';
+            $bantenYadnya = $this->sparql->query($sql);
             foreach($bantenYadnya as $item){
                  array_push($resultBantenYadnya,[
                      'namaBanten'=>$this->parseData($item->banten->getUri()),
@@ -68,7 +61,6 @@ class PenjelajahanController extends Controller
             'kategoriYadnya'=>$resultKategoriYadnya,
             'resultNamaYadnya'=>$resultNamaYadnya,
             'resp'=>$resp,
-            'namaKategori'=>$resultNamaKategori,
             'listBanten'=>$resultBantenYadnya,
             'jumlahYadnya'=>$jumlahYadnya,
             'jumlahBanten'=>$jumlahBanten
@@ -77,7 +69,8 @@ class PenjelajahanController extends Controller
 
         return view('dashboard.penjelajahan',[
             'title'=>'Penjelajahan',
-            'data'=>$data
+            'data'=>$data,
+            'sql'=>isset($sql)? $sql:''
         ]);
     }
 }

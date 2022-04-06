@@ -10,6 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class PencarianController extends Controller
 {
     public function pencarian(Request $request){
+
         $tingkatanBanten = $this->sparql->query('SELECT ?tingkatanBanten 
         WHERE { ?tingkatanBanten rdfs:subClassOf banten:Tingkatan }
         ');
@@ -20,11 +21,16 @@ class PencarianController extends Controller
         WHERE{?unsur a banten:Unsur}');
         $periodeYadnya = $this->sparql->query('SELECT ?periodeYadnya 
         WHERE{?periodeYadnya a banten:PeriodeYadnya}');
+        $alasBanten = $this->sparql->query('SELECT ?alas 
+        WHERE{?alas a banten:AlasBanten}');
+        $komponenBanten = $this->sparql->query('SELECT ?komponen 
+        WHERE{?komponen a banten:Banten}');
         $resultTingkatanBanten=[];
         $resultKategoriYadnya=[];
         $resultUnsurBanten = [];
         $resultPeriodeYadnya = [];
-
+        $resultAlasBanten = [];
+        $resultKomponenBanten = [];
         foreach($tingkatanBanten as $item){
             array_push($resultTingkatanBanten, [
                 'kategoriTingkatanBanten' => $this->parseData($item->tingkatanBanten->getUri())
@@ -35,11 +41,14 @@ class PencarianController extends Controller
                 'kategoriYadnya' => $this->parseData($item->kategoriYadnya->getUri())
             ]);
         }
-        
-        
         foreach($unsurBanten as $item){
             array_push($resultUnsurBanten, [
                 'kategoriUnsurBanten' => $this->parseData($item->unsur->getUri())
+            ]);
+        }
+        foreach($alasBanten as $item){
+            array_push($resultAlasBanten, [
+                'kategoriAlasBanten' => $this->parseData($item->alas->getUri())
             ]);
         }
         foreach($periodeYadnya as $item){
@@ -47,9 +56,17 @@ class PencarianController extends Controller
                 'kategoriPeriodeYadnya' => $this->parseData($item->periodeYadnya->getUri())
             ]);
         }
+        foreach($komponenBanten as $item){
+            array_push($resultKomponenBanten, [
+                'kategoriKomponenBanten' => $this->parseData($item->komponen->getUri())
+            ]);
+        }
 
-        if($request->has('cari_banten') !=''||$request->has('cari_kategoriTingkatanBanten')||
-        $request->has('cari_kategoriUnsurBanten')||$request->has('cari_kategoriYadnya')||
+        if($request->has('cari_banten') !=''||
+        $request->has('cari_kategoriTingkatanBanten')||
+        $request->has('cari_kategoriUnsurBanten')||
+        $request->has('cari_kategoriAlasBanten')||
+        $request->has('cari_kategoriYadnya')||
         $request->has('cari_kategoriPeriodeYadnya')){
             $resp = 1;
             $sql = 'SELECT ?banten (COALESCE(?gambar, ?missing) as ?gambarnull) WHERE{
@@ -65,12 +82,23 @@ class PencarianController extends Controller
             }
             else{
                 $sql=$sql;
-            }if($request->cari_kategoriUnsurBanten !=''){
+            }
+            if($request->cari_kategoriUnsurBanten !=''){
                 if($i ==0){
                     $sql = $sql.'?banten banten:memilikiUnsurBanten banten:'.$request->cari_kategoriUnsurBanten;
                     $i++;
                 }else{
                     $sql = $sql.'.?banten banten:memilikiUnsurBanten banten:'.$request->cari_kategoriUnsurBanten;
+                }
+            }else{
+                $sql=$sql;
+            }
+            if($request->cari_kategoriAlasBanten !=''){
+                if($i ==0){
+                    $sql = $sql.'?banten banten:memilikiAlasBanten banten:'.$request->cari_kategoriAlasBanten;
+                    $i++;
+                }else{
+                    $sql = $sql.'.?banten banten:memilikiAlasBanten banten:'.$request->cari_kategoriAlasBanten;
                 }
             }else{
                 $sql=$sql;
@@ -125,15 +153,19 @@ class PencarianController extends Controller
         $data =[
             'listKategoriTingkatanBanten'=>$resultTingkatanBanten,
             'listKategoriUnsurBanten'=>$resultUnsurBanten,
+            'listKategoriAlasBanten'=>$resultAlasBanten,
             'listKategoriYadnya'=>$resultKategoriYadnya,
             'listKategoriPeriodeYadnya'=>$resultPeriodeYadnya,
+            'listKategoriKomponenBanten'=>$resultKomponenBanten,
             'hasilSearching'=>$hasilSearchingBanten,
             'jumlahBanten'=>$jumlahBanten,
-            'resp'=>$resp
+            'resp'=>$resp,
         ];
         return view('dashboard.pencarian',[
-            'title'=>'Pencarian',
-            'data'=>$data
+            'title'=>'Pencarian Berdasarkan Kategori',
+            'data'=>$data,
+            'sql'=>isset($sql)?$sql:''
+
         ]);
     }
     public function paginate($items,$perPage = 12, $page = null, $options= []){
