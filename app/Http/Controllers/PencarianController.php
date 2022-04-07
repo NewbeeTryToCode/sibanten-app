@@ -10,7 +10,6 @@ use Illuminate\Pagination\LengthAwarePaginator;
 class PencarianController extends Controller
 {
     public function pencarian(Request $request){
-
         $tingkatanBanten = $this->sparql->query('SELECT ?tingkatanBanten 
         WHERE { ?tingkatanBanten rdfs:subClassOf banten:Tingkatan }
         ');
@@ -103,6 +102,18 @@ class PencarianController extends Controller
             }else{
                 $sql=$sql;
             }
+            if(!empty($request->cari_kategoriKomponenBanten)){
+                foreach($request->cari_kategoriKomponenBanten as $item){
+                    if($i ==0){
+                        $sql = $sql.'?banten banten:memilikiKomponen banten:'.$item;
+                        $i++;
+                    }else{
+                        $sql = $sql.'.?banten banten:memilikiKomponen   s banten:'.$item;
+                    }
+                }
+            }else{
+                $sql=$sql;
+            }
             if($request->cari_kategoriYadnya !=''){
                 if($i==0){
                     $sql = $sql.'?upacara  a banten:'.$request->cari_kategoriYadnya.'.?upacara banten:memilikiBanten ?banten';
@@ -149,6 +160,7 @@ class PencarianController extends Controller
             $jumlahBanten=0;
             $resp=0;
         }
+        
         $hasilSearchingBanten = $this->paginate($resultBanten)->withQueryString()->withPath('/dashboard/pencarian');
         $data =[
             'listKategoriTingkatanBanten'=>$resultTingkatanBanten,

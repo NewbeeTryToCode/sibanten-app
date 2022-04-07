@@ -70,6 +70,13 @@
                                 @endforeach
                             </select>
                         </div>
+                        <div class="form-group col-sm-6 my-2">
+                            <select class="form-control selectpicker border multi-select-filter" placeholder="Komponen Banten"  id="cari_kategoriKomponenBanten"  multiple name="cari_kategoriKomponenBanten[]">
+                                @foreach ($data['listKategoriKomponenBanten'] as $item)
+                                <option value="{{ $item['kategoriKomponenBanten'] }}">{{ str_replace('_'," ",$item['kategoriKomponenBanten']) }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group col-sm-12 my-2">
                             <a href="/dashboard/pencarian" class="btn float-right btn-warning px-4 ml-2">Reset</a>
                             <button type="submit" id="cari_banten" name="cari_banten" class="btn float-right btn-primary px-4">Cari</button>
@@ -123,5 +130,23 @@
             </div>
         </div>
     </div>
- 
+    
+    <script>
+        var select = document.getElementById('cari_kategoriKomponenBanten');
+        multi(select,[]);
+        select.mulstiselect({
+            nonSelectedText:'Services'
+        });
+        $(".multi-select-filter").each(function () {
+        $(this).multipleSelect({
+        filter: true,
+        width: "100%",
+        placeholder: $(this).attr('placeholder')
+    });
+})
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.14.0-beta2/js/bootstrap-select.min.js" integrity="sha512-FHZVRMUW9FsXobt+ONiix6Z0tIkxvQfxtCSirkKc5Sb4TKHmqq1dZa8DphF0XqKb3ldLu/wgMa8mT6uXiLlRlw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
 @endsection
