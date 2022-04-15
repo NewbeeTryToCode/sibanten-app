@@ -161,7 +161,7 @@ use App\Http\Controllers\DetailController;
                               <button class="nav-link" id="nav-komponen-tab" data-bs-toggle="tab" data-bs-target="#nav-komponen" type="button" role="tab" aria-controls="nav-komponen" aria-selected="false">Komponen</button>
 
                             </div>
-                          </nav>
+                        </nav>
                           <div class="tab-content" id="nav-tabContent">
                             <div class="tab-pane fade show active" id="nav-deskripsi" role="tabpanel" aria-labelledby="nav-deskripsi-tab">
                                 <?php
@@ -181,7 +181,7 @@ use App\Http\Controllers\DetailController;
                                 $count = count(DetailController::sameAs($detailBanten,$index))
                                 ?>
                                 @foreach (DetailController::sameAs($detailBanten,$index) as $item)
-                                @if($i==$count)
+                                @if($i==$count) 
                                 <a class="text-decoration-nonne text-secondary" href="/dashboard/detail/{{ $item }}">{{ str_replace('_',' ',$item)}}</a>
                                 @else
                                 <a class="text-decoration-nonne text-secondary" href="/dashboard/detail/{{ $item }}">{{ str_replace('_',' ',$item)}}, </a>

@@ -12,7 +12,7 @@
                     <form action="" class="row mb-4"> 
                         <div class="form-group col-sm-6 my-2">
                            <select class="custom-select"id="cari_kategoriTingkatanBanten" name="cari_kategoriTingkatanBanten">
-                                <option value="">Kategori Banten</option>
+                                <option value="">Tingkatan Banten</option>
                                 @foreach ($data['listKategoriTingkatanBanten'] as $item)
                                 @if(isset($_GET['cari_kategoriTingkatanBanten']) &&$_GET['cari_kategoriTingkatanBanten']==$item['kategoriTingkatanBanten'])
                                 <option selected value="{{ $item['kategoriTingkatanBanten'] }}">{{ $item['kategoriTingkatanBanten'] }}</option>
