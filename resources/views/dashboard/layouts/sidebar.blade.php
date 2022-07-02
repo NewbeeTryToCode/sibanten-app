@@ -21,6 +21,18 @@
 
         <!-- Divider -->
         <hr class="dropdown-divider mx-3">
+        @can('admin')
+            <div class="sidebar-heading">
+                Admin
+            </div>
+            <li class="nav-item {{ Request::is('dashboard/admin') ? 'active':'' }}">
+                <a class="nav-link" href="/dashboard/admin">
+                    <i class="fa-solid fa-book"></i>
+                    <span>Manage Data</span>
+                </a>
+            </li>
+            <hr class="dropdown-divider mx-3">
+        @endcan
 
         <!-- Heading -->
         <div class="sidebar-heading">

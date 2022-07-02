@@ -78,9 +78,9 @@
                                 @elseif($data['resp']==1&&$data['jumlahYadnya']==0)
                                     <h4 class="small font-weight-bold">Data tidak ditemukan</h4>
                                 @else
-                                    <div class="row" id="hasilSearching">
+                                    <div class="row" id="hasilPenjelajahan">
 
-                                        @foreach ($data['resultNamaYadnya'] as $item)
+                                        @foreach ($data['hasilPenjelajahan'] as $item)
                                             <div class="col-md-6 col-lg-3">
                                                 <div class="card card-hover mb-4">
                                                     <img src="{{ asset('assets/images/upacara/'.$item['gambar'].'') }}" style="opacity: 0.8; width:100%; height:160px" alt="{{ $item['gambar'] }}">
@@ -94,7 +94,7 @@
                                 @endif
                                  <div class="d-flex justify-content-center">
                                 @if($data['jumlahYadnya']>12)
-                                    {{ $data['hasilSearching']->links()}}  
+                                    {{ $data['hasilPenjelajahan']->links()}}  
                                 @endif
                             @endif
                                 

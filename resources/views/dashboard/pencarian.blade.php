@@ -71,7 +71,7 @@
                             </select>
                         </div>
                         <div class="form-group col-sm-6 my-2">
-                            <select class="form-control selectpicker border multi-select-filter" placeholder="Komponen Banten"  id="cari_kategoriKomponenBanten"  multiple name="cari_kategoriKomponenBanten[]">
+                            <select class="form-control selectpicker" placeholder="Komponen Banten"  id="cari_kategoriKomponenBanten"  multiple name="cari_kategoriKomponenBanten[]">
                                 @foreach ($data['listKategoriKomponenBanten'] as $item)
                                 <option value="{{ $item['kategoriKomponenBanten'] }}">{{ str_replace('_'," ",$item['kategoriKomponenBanten']) }}</option>
                                 @endforeach

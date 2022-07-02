@@ -12,7 +12,11 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600"></span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600">
+                    @auth
+                        {{ Auth::user()->name }}
+                    @endauth
+                </span>
                 <i class="fa fa-circle fa-2xl"></i>
             </a>
             <!-- Dropdown - User Information -->
@@ -22,10 +26,16 @@
                     <i class="fa fa-house fa-sm fa-fw mr-2 text-gray-400"></i>
                     Landing Page
                 </a>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Logout
+                @auth
+                    <button type="submit" data-toggle="modal" data-target="#logoutModal" class="dropdown-item"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Logout</button>
+                @else
+                <a class="dropdown-item" href="/login">
+                    <i class="fas fa-sign-in-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Login
                 </a>
+                @endauth
+               
             </div>
         </li>
 

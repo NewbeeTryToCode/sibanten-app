@@ -17,7 +17,7 @@ class DashboardController extends Controller
                 UNION {?banten a banten:Madya}
                 UNION {?banten a banten:Utama}
                 OPTIONAL{?banten banten:memilikiFoto ?gambar}
-            }');
+        } ORDER BY DESC(?gambarnull)');
         //query semua data banten yang memiliki upacara
         $bantenMemilikiUpacara = $this->sparql->query('SELECT * 
         WHERE { {?banten a banten:Alit} 

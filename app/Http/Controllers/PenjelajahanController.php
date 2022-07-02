@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class PenjelajahanController extends Controller
 {
@@ -22,7 +25,7 @@ class PenjelajahanController extends Controller
         $jumlahYadnya=0;
         $resultNamaYadnya=[];
         //query kategori yadnya
-        if($request->has('penjelajahanBanten')){
+        if($request->has('penjelajahanBanten')||$request->has('kategoriYadnya')){
             $resp=1;
             if($request->kategoriYadnya){
                 $sql = 'SELECT ?namaUpacara (COALESCE(?gambar, ?missing) as ?gambarnull) WHERE{
@@ -55,15 +58,18 @@ class PenjelajahanController extends Controller
                  ]);
             }
             $jumlahBanten = $jumlahBanten + count($resultBantenYadnya);
-            
-        }
+        }            
+        $hasilPenjelajahanBanten = $this->paginate($resultNamaYadnya)->withQueryString()->withPath('/dashboard/penjelajahan');
+        ;
+
         $data=[
             'kategoriYadnya'=>$resultKategoriYadnya,
             'resultNamaYadnya'=>$resultNamaYadnya,
             'resp'=>$resp,
             'listBanten'=>$resultBantenYadnya,
             'jumlahYadnya'=>$jumlahYadnya,
-            'jumlahBanten'=>$jumlahBanten
+            'jumlahBanten'=>$jumlahBanten,
+            'hasilPenjelajahan'=>$hasilPenjelajahanBanten
         ];
 
 
@@ -72,5 +78,11 @@ class PenjelajahanController extends Controller
             'data'=>$data,
             'sql'=>isset($sql)? $sql:''
         ]);
+    }
+    public function paginate($items,$perPage = 12, $page = null, $options= []){
+        $page = $page ?:(Paginator::resolveCurrentPage() ?: 1);
+        $items = $items instanceof Collection ? $items : Collection::make($items);
+        return new LengthAwarePaginator($items->forPage($page,$perPage),$items->count(),$perPage,$page
+        ,$options);
     }
 }
